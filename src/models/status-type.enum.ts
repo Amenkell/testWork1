@@ -1,5 +1,5 @@
 export enum StatusTypeEnum {
-  ALL = 'ALL',
-  INACTIVE = 'INACTIVE',
-  Active = 'ACTIVE',
+  ALL = 'Все',
+  INACTIVE = 'Неактивные',
+  ACTIVE = 'Активные',
 }

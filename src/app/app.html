@@ -10,9 +10,9 @@
   />
 
   <select [ngModel]="filterStatus()" (ngModelChange)="filterStatus.set($event)" class="filter-select">
-    <option value="{{StatusTypeEnum.ALL}}">Все</option>
-    <option value="{{StatusTypeEnum.Active}}">Только активные</option>
-    <option value="{{StatusTypeEnum.INACTIVE}}">Только неактивные</option>
+    @for (statusType of statusTypes(); track statusType) {
+      <option value="{{statusType}}">{{statusType}}</option>
+    }
   </select>
 
   <ul class="user-list">

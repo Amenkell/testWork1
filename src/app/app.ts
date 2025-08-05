@@ -18,6 +18,7 @@ export class App implements OnInit {
   protected searchName: WritableSignal<string> = signal('');
   protected filterStatus: WritableSignal<StatusTypeEnum> = signal<StatusTypeEnum>(StatusTypeEnum.ALL);
   protected selectedUser: WritableSignal<User | null> = signal<User | null>(null);
+  protected statusTypes: WritableSignal<string[]> = signal(Object.values(StatusTypeEnum));
 
   private userService: UserService = inject(UserService);
 
@@ -28,7 +29,7 @@ export class App implements OnInit {
       const filterVal = this.filterStatus();
       let filteredUsers: User[] = this.users;
 
-      if (filterVal === StatusTypeEnum.Active) {
+      if (filterVal === StatusTypeEnum.ACTIVE) {
         filteredUsers = filteredUsers.filter((u) => u.active);
       } else if (filterVal === StatusTypeEnum.INACTIVE) {
         filteredUsers = filteredUsers.filter((u) => !u.active);
@@ -56,6 +57,4 @@ export class App implements OnInit {
   selectUser(user: User): void {
     this.selectedUser.set(user);
   }
-
-  protected readonly StatusTypeEnum: typeof StatusTypeEnum = StatusTypeEnum;
 }
